@@ -53,6 +53,15 @@ public class Database {
                 "contato varchar(500) not null," +
                 "valido int not null," +
                 "Primary key(cod));");
+
+        /*
+        db.execSQL("CREATE TABLE IF NOT EXISTS votacao(" +
+                "cod INTEGER not null," +
+                "cod_des int not null," +
+                "cod_user int not null," +
+                "qtd int not null," +
+                "Primary key(cod));");
+                */
     }
 }
 
