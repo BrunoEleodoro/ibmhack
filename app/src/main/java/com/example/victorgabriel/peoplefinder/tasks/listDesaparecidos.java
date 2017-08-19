@@ -78,6 +78,8 @@ public class listDesaparecidos extends AsyncTask<String,String,String> {
                     String img = object.optString("img");
                     String data = object.optString("data");
                     String hora = object.optString("hora");
+                    String contato = object.optString("contato");
+                    String valido = object.optString("valido");
 
                     Desaparecido desaparecido = new Desaparecido();
                     desaparecido.setCod(Integer.parseInt(cod));
@@ -89,6 +91,8 @@ public class listDesaparecidos extends AsyncTask<String,String,String> {
                     desaparecido.setImg(img);
                     desaparecido.setData(data);
                     desaparecido.setHora(hora);
+                    desaparecido.setContato(contato);
+                    desaparecido.setValido(valido);
 
                     desaparecidos.add(desaparecido);
 

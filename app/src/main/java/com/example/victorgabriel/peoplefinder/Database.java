@@ -50,6 +50,8 @@ public class Database {
                 "img varchar(500) not null," +
                 "data varchar(500) not null," +
                 "hora varchar(500) not null," +
+                "contato varchar(500) not null," +
+                "valido int not null," +
                 "Primary key(cod));");
     }
 }
