@@ -1,6 +1,7 @@
 package com.example.victorgabriel.peoplefinder.activities;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -29,6 +30,7 @@ public class Maps_des extends AppCompatActivity implements OnMapReadyCallback {
     LocationManager locationManager;
     GoogleMap mMap;
     double lat, lng;
+    ProgressDialog dialog;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -56,7 +58,11 @@ public class Maps_des extends AppCompatActivity implements OnMapReadyCallback {
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
+        dialog = new ProgressDialog(this);
+        dialog.setTitle("Aviso");
+        dialog.setMessage("Aguarde o gps te encontrar...");
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.show();
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
@@ -70,7 +76,9 @@ public class Maps_des extends AppCompatActivity implements OnMapReadyCallback {
         mMap.setMyLocationEnabled(true);
         mMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
             @Override
-            public void onMyLocationChange(Location location) {
+           public void onMyLocationChange(Location location) {
+                dialog.dismiss();
+
                 lat = location.getLatitude();
                 lng = location.getLongitude();//dsajkfsfj,
                 LatLng ponto = new LatLng(lat, lng);
