@@ -26,14 +26,31 @@ public class Database {
 
     public void create_tables()
     {
-        db.execSQL("CREATE TABLE IF NOT EXISTS notas(" +
+        db.execSQL("CREATE TABLE IF NOT EXISTS login(" +
                 "cod INTEGER not null," +
-                "titulo varchar(500) not null," +
-                "texto varchar(500) not null," +
-                "data date not null," +
-                "selecao varchar(5)," +
+                "email varchar(500) not null," +
+                "senha varchar(500) not null," +
                 "Primary key(cod));");
 
+        db.execSQL("CREATE TABLE IF NOT EXISTS users(" +
+                "cod INTEGER not null," +
+                "nome varchar(500) not null," +
+                "rg varchar(500) not null," +
+                "email varchar(500) not null," +
+                "senha varchar(500) not null," +
+                "Primary key(cod));");
+
+        db.execSQL("CREATE TABLE IF NOT EXISTS desaparecidos(" +
+                "cod INTEGER not null," +
+                "nome_des varchar(500) not null," +
+                "idade_res int not null," +
+                "latitude varchar(500) not null," +
+                "longitude varchar(500) not null," +
+                "descricao varchar(1000) not null," +
+                "img varchar(500) not null," +
+                "data varchar(500) not null," +
+                "hora varchar(500) not null," +
+                "Primary key(cod));");
     }
 }
 
