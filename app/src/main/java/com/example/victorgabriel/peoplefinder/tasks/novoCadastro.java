@@ -66,6 +66,8 @@ public class novoCadastro extends AsyncTask<String,String,String> {
             {
                 String codigo = s.replace("[cod]","");
                 Toast.makeText(activity.getApplicationContext(), "Cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
+                db.sql("DELETE FROM login WHERE 1");
+                db.sql("DELETE FROM users WHERE 1");
                 db.sql("INSERT INTO users VALUES("+codigo+",\""+nome+"\",\""+rg+"\",\""+email+"\",\""+senha+"\");");
                 db.sql("INSERT INTO login VALUES("+codigo+",\""+email+"\",\""+senha+"\");");
                 activity.finish();

@@ -31,7 +31,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name=".activities.MapsActivity"
             android:label="@string/title_activity_maps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,7 +40,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".people"
+            android:name=".activities.people"
             android:label="@string/title_activity_people"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

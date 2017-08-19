@@ -58,6 +58,7 @@ public class getLogin extends AsyncTask<String,String,String> {
             {
                 String codigo = s.replace("[cod]","");
                 Toast.makeText(activity.getApplicationContext(), "Logado com sucesso!", Toast.LENGTH_SHORT).show();
+                db.sql("DELETE FROM login WHERE 1");
                 db.sql("INSERT INTO login VALUES("+codigo+",\""+email+"\",\""+senha+"\");");
                 //Intent intent = new Intent(activity,Maps);
                 activity.finish();
