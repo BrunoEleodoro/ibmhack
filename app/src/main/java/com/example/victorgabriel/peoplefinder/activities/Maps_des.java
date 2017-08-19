@@ -1,23 +1,34 @@
 package com.example.victorgabriel.peoplefinder.activities;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.victorgabriel.peoplefinder.R;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class Maps_des extends AppCompatActivity implements OnMapReadyCallback {
     LocationManager locationManager;
-
+    GoogleMap mMap;
+    double lat, lng;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -29,7 +40,7 @@ public class Maps_des extends AppCompatActivity implements OnMapReadyCallback {
                     return true;
                 case R.id.navigation_notifications:
 
-                    Intent i = new Intent(Maps_des.this,people.class);
+                    Intent i = new Intent(Maps_des.this, people.class);
                     startActivity(i);
                     return true;
             }
@@ -43,14 +54,42 @@ public class Maps_des extends AppCompatActivity implements OnMapReadyCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps_des);
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapa);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        mMap.setMyLocationEnabled(true);
+        mMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
+            @Override
+            public void onMyLocationChange(Location location) {
+                lat = location.getLatitude();
+                lng = location.getLongitude();
+                LatLng ponto = new LatLng(lat, lng);
+                if (ActivityCompat.checkSelfPermission(Maps_des.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(Maps_des.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                //BitmapDescriptor icone = BitmapDescriptorFactory.fromResource(R.drawable.);
+                MarkerOptions marker = new MarkerOptions().position(ponto).title("Minha localização");
+                mMap.addMarker(marker);
 
+                mMap.setMyLocationEnabled(false);
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(ponto));
+                //mMap.animateCamera(CameraUpdateFactory.zoomTo(zoom), 2000, null);
+                CameraPosition cameraPosition = new CameraPosition.Builder()
+                        .target(ponto).zoom(13).build();
+                mMap.animateCamera(CameraUpdateFactory
+                        .newCameraPosition(cameraPosition));
+
+            }
+        });
     }
 }
