@@ -2,4 +2,8 @@
     <string name="app_name">PeopleFinder</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_people">people</string>
+    <string name="title_activity_maps_des">Maps_des</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
