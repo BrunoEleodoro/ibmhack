@@ -22,7 +22,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="60dp"
             android:layout_marginTop="60dp"
-            app:srcCompat="@drawable/user" />
+            app:srcCompat="@drawable/icon_dois" />
 
         <ProgressBar
             android:id="@+id/progressBar2"

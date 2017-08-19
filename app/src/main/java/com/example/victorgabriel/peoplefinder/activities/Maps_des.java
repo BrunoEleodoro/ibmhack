@@ -1,5 +1,6 @@
 package com.example.victorgabriel.peoplefinder.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -27,6 +28,8 @@ public class Maps_des extends AppCompatActivity {
                     return true;
                 case R.id.navigation_notifications:
                     mTextMessage.setText(R.string.title_notifications);
+                    Intent i = new Intent(Maps_des.this,people.class);
+                    startActivity(i);
                     return true;
             }
             return false;

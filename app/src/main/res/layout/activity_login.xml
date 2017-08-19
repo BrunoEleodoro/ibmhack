@@ -25,7 +25,7 @@
                 android:layout_height="180dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                app:srcCompat="@drawable/user" />
+                app:srcCompat="@drawable/icon_dois" />
 
             <TextView
                 android:id="@+id/textView"
