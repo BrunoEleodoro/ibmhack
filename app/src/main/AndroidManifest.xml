@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.victorgabriel.peoplefinder">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -30,19 +31,34 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+
         <activity
             android:name=".activities.MapsActivity"
-            android:label="@string/title_activity_maps">
+            android:label="@string/title_activity_maps"/>
+
+        <activity android:name=".activities.loading">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.login" />
+
+
+        <activity android:name=".activities.cadastro" />
+
+        <activity android:name=".activities.cadastro_des" />
+
         <activity
             android:name=".activities.people"
             android:label="@string/title_activity_people"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+<activity
+            android:name=".activities.Maps_des"
+            android:label="@string/title_activity_maps_des" />
+        <activity android:name=".ver_des"></activity>
+
     </application>
 
 </manifest>
