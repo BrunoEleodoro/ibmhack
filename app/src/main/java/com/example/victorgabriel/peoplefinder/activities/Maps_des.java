@@ -72,7 +72,7 @@ public class Maps_des extends AppCompatActivity implements OnMapReadyCallback {
             @Override
             public void onMyLocationChange(Location location) {
                 lat = location.getLatitude();
-                lng = location.getLongitude();
+                lng = location.getLongitude();//dsajkfsfj,
                 LatLng ponto = new LatLng(lat, lng);
                 if (ActivityCompat.checkSelfPermission(Maps_des.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(Maps_des.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     return;
