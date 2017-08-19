@@ -32,7 +32,7 @@
                 android:layout_gravity="bottom|right"
                 android:layout_margin="@dimen/fab_margin"
                 android:clickable="true"
-                app:fabSize="mini"
+                app:fabSize="normal"
                 map:srcCompat="@drawable/minhalocal" />
         </fragment>
 
