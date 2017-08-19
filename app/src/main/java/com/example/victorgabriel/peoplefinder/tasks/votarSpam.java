@@ -56,6 +56,11 @@ public class votarSpam extends AsyncTask<String,String,String> {
                 Toast.makeText(activity.getApplicationContext(), "Marcado com sucesso!", Toast.LENGTH_SHORT).show();
                 activity.finish();
             }
+            else if(s.contains("[cadastrado]"))
+            {
+                Toast.makeText(activity.getApplicationContext(), "Você já marcou isto como spam!", Toast.LENGTH_SHORT).show();
+                activity.finish();
+            }
         }
     }
 }
