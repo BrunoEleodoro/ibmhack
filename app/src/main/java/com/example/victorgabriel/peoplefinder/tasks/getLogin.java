@@ -16,7 +16,7 @@ import com.example.victorgabriel.peoplefinder.Message;
  * Created by bruno on 19/08/17.
  */
 
-public class login extends AsyncTask<String,String,String> {
+public class getLogin extends AsyncTask<String,String,String> {
     Message message = new Message();
     BaseURL baseURL = new BaseURL();
     Internet internet = new Internet();
@@ -28,7 +28,7 @@ public class login extends AsyncTask<String,String,String> {
     ListView lv;
     ProgressDialog dialog;
     Database db;
-    public login(Activity activity,String email, String senha)
+    public getLogin(Activity activity, String email, String senha)
     {
         this.activity = activity;
         this.lv = lv;
@@ -40,7 +40,7 @@ public class login extends AsyncTask<String,String,String> {
     @Override
     protected String doInBackground(String... strings) {
         String res = "";
-        res = internet.get("login.php?email="+email+"&senha="+senha,"");
+        res = internet.get("getLogin.php?email="+email+"&senha="+senha,"");
         return res;
     }
 
@@ -54,12 +54,16 @@ public class login extends AsyncTask<String,String,String> {
         }
         else
         {
-            if(s.contains("[sucesso]"))
+            if(s.contains("1"))
             {
                 Toast.makeText(activity.getApplicationContext(), "Logado com sucesso!", Toast.LENGTH_SHORT).show();
-                db.sql("INSERT INTO login VALUES(null,\""+email+"\",\""+senha+"\");");
+                db.sql("INSERT INTO getLogin VALUES(null,\""+email+"\",\""+senha+"\");");
                 //Intent intent = new Intent(activity,Maps);
                 activity.finish();
+            }
+            else
+            {
+                Toast.makeText(activity.getApplicationContext(), "Email ou senha incorretos!", Toast.LENGTH_SHORT).show();
             }
         }
     }
