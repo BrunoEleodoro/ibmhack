@@ -33,13 +33,11 @@ public class novoCadastro extends AsyncTask<String,String,String> {
     String email;
     String rg;
     String senha;
-    ListView lv;
     ProgressDialog dialog;
     Database db;
     public novoCadastro(Activity activity,String nome,String rg,String email,String senha)
     {
         this.activity = activity;
-        this.lv = lv;
         this.nome = internet.encode(nome);
         this.rg = internet.encode(rg);
         this.email = internet.encode(email);
@@ -64,10 +62,12 @@ public class novoCadastro extends AsyncTask<String,String,String> {
         }
         else
         {
-            if(s.contains("[sucesso]"))
+            if(s.contains("[cod]"))
             {
+                String codigo = s.replace("[cod]","");
                 Toast.makeText(activity.getApplicationContext(), "Cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
-                db.sql("INSERT INTO users VALUES(null,\""+nome+"\",\""+rg+"\",\""+email+"\",\""+senha+"\");");
+                db.sql("INSERT INTO users VALUES("+codigo+",\""+nome+"\",\""+rg+"\",\""+email+"\",\""+senha+"\");");
+                db.sql("INSERT INTO login VALUES("+codigo+",\""+email+"\",\""+senha+"\");");
                 activity.finish();
             }
         }
