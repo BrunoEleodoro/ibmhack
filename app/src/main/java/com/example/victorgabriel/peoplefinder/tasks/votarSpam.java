@@ -2,7 +2,6 @@ package com.example.victorgabriel.peoplefinder.tasks;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -16,31 +15,29 @@ import com.example.victorgabriel.peoplefinder.Message;
  * Created by bruno on 19/08/17.
  */
 
-public class getLogin extends AsyncTask<String,String,String> {
+public class votarSpam extends AsyncTask<String,String,String> {
     Message message = new Message();
     BaseURL baseURL = new BaseURL();
     Internet internet = new Internet();
     Activity activity;
-    String nome;
-    String email;
-    String rg;
-    String senha;
+    String cod_des;
+    String cod_user;
     ListView lv;
     ProgressDialog dialog;
     Database db;
-    public getLogin(Activity activity, String email, String senha)
+    public votarSpam(Activity activity, String cod_des, String cod_user)
     {
         this.activity = activity;
         this.lv = lv;
-        this.email = internet.encode(email);
-        this.senha = internet.encode(senha);
+        this.cod_des = internet.encode(cod_des);
+        this.cod_user = internet.encode(cod_user);
         db = new Database(activity);
-        dialog =message.progress(activity,"Aguarde, buscando pessoas desaparecidas...");
+        dialog =message.progress(activity,"Aguarde, marcando como spam...");
     }
     @Override
     protected String doInBackground(String... strings) {
         String res = "";
-        res = internet.get("getLogin.php?email="+email+"&senha="+senha,"");
+        res = internet.get("votarSpam.php?cod_des="+cod_des+"&cod_user="+cod_user,"");
         return res;
     }
 
@@ -54,17 +51,10 @@ public class getLogin extends AsyncTask<String,String,String> {
         }
         else
         {
-            if(s.contains("[cod]"))
+            if(s.contains("[sucesso]"))
             {
-                String codigo = s.replace("[cod]","");
-                Toast.makeText(activity.getApplicationContext(), "Logado com sucesso!", Toast.LENGTH_SHORT).show();
-                db.sql("INSERT INTO login VALUES("+codigo+",\""+email+"\",\""+senha+"\");");
-                //Intent intent = new Intent(activity,Maps);
+                Toast.makeText(activity.getApplicationContext(), "Marcado com sucesso!", Toast.LENGTH_SHORT).show();
                 activity.finish();
-            }
-            else
-            {
-                Toast.makeText(activity.getApplicationContext(), "Email ou senha incorretos!", Toast.LENGTH_SHORT).show();
             }
         }
     }
