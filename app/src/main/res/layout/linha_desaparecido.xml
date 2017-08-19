@@ -10,15 +10,51 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@color/common_google_signin_btn_text_dark_default"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="1">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/img_des"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
             app:srcCompat="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_gravity="center"
+            android:layout_weight="0.93"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_nome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="Nome"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_data"
+                android:layout_width="134dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="120dp"
+                android:text="data" />
+
+            <TextView
+                android:id="@+id/txt_hora"
+                android:layout_width="139dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="5dp"
+                android:text="Hora" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>
