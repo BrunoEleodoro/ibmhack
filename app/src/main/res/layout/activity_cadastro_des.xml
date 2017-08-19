@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.victorgabriel.peoplefinder.activities.cadastro">
+    tools:context="com.example.victorgabriel.peoplefinder.activities.cadastro_des">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -122,5 +122,4 @@
                 android:textColor="#FFFFFF" />
         </LinearLayout>
     </ScrollView>
-
 </RelativeLayout>

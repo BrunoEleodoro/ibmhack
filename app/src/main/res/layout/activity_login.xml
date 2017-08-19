@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8B0000"
+    android:background="#FF6347"
     tools:context="com.example.victorgabriel.peoplefinder.activities.login">
 
     <ScrollView
@@ -72,7 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:background="#FF6347"
+                android:background="#8B0000"
                 android:text="Entrar" />
 
             <Button
@@ -82,7 +82,7 @@
                 android:layout_marginBottom="40dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:background="#FF6347"
+                android:background="#8B0000"
                 android:text="Cadastrar-se" />
 
         </LinearLayout>
