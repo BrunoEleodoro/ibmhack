@@ -16,6 +16,24 @@ public class Desaparecido {
     String descricao;
     String img;
     String data;
+    String contato;
+    String valido;
+
+    public String getContato() {
+        return contato;
+    }
+
+    public void setContato(String contato) {
+        this.contato = contato;
+    }
+
+    public String getValido() {
+        return valido;
+    }
+
+    public void setValido(String valido) {
+        this.valido = valido;
+    }
 
     public int getCod() {
         return cod;
