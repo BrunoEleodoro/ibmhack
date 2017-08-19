@@ -18,6 +18,7 @@ public class Desaparecido {
     String data;
     String contato;
     String valido;
+    String hora;
 
     public String getContato() {
         return contato;
@@ -107,6 +108,6 @@ public class Desaparecido {
         this.hora = hora;
     }
 
-    String hora;
+
 
 }

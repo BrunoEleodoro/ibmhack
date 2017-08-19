@@ -42,7 +42,7 @@ public class cadastro extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(senha.getText().equals(senha2.getText())) {
+                if(senha.getText().toString().equals(senha2.getText().toString())) {
 
                     new novoCadastro(cadastro.this, nome.getText().toString().trim(), rg.getText().toString().trim(), email.getText().toString().trim(), senha.getText().toString()).execute("");
 
