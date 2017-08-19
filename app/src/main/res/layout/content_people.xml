@@ -12,11 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:id="@+id/linearLayout">
+        android:id="@+id/linearLayout"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="match_parent"
+            android:layout_width="68dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="Filtros"
@@ -25,8 +28,45 @@
 
         <Spinner
             android:id="@+id/spinner"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" />
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <Spinner
+                android:id="@+id/spinner2"
+                android:layout_width="128dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="0.04" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.04"
+                android:text="Entre"
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+id/spinner3"
+                android:layout_width="128dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="0.16" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="7dp"
+            android:background="#8B0000"
+            android:orientation="vertical"></LinearLayout>
 
         <TextView
             android:id="@+id/textView5"
