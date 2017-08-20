@@ -30,24 +30,24 @@ public class listDesaparecidos extends AsyncTask<String,String,String> {
     Activity activity;
     String data_min;
     String data_max;
-    String hora_min;
-    String hora_max;
+    String idade_min;
+    String idade_max;
     ListView lv;
     ProgressDialog dialog;
-    public listDesaparecidos(Activity activity,ListView lv,String data_min, String data_max, String hora_min, String hora_max)
+    public listDesaparecidos(Activity activity,ListView lv,String data_min, String data_max, String idade_min, String idade_max)
     {
         this.activity = activity;
         this.lv = lv;
         this.data_min = internet.encode(data_min);
         this.data_max = internet.encode(data_max);
-        this.hora_min = internet.encode(hora_min);
-        this.hora_max = internet.encode(hora_max);
+        this.idade_min = internet.encode(idade_min);
+        this.idade_max = internet.encode(idade_max);
         dialog = message.progress(activity,"Aguarde, buscando pessoas desaparecidas...");
     }
     @Override
     protected String doInBackground(String... strings) {
         String res = "";
-        res = internet.get("listDesaparecidos.php?data_min="+data_min+"&data_max="+data_max+"&hora_min="+hora_min+"&hora_max="+hora_max,"");
+        res = internet.get("listDesaparecidos.php?data_min="+data_min+"&data_max="+data_max+"&hora_min="+idade_min+"&hora_max="+idade_max,"");
         return res;
     }
 
