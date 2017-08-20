@@ -1,7 +1,10 @@
 package com.example.victorgabriel.peoplefinder.activities;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,6 +29,7 @@ public class ver_des extends AppCompatActivity implements OnMapReadyCallback{
     ImageView txt_img;
     TextView txt_data;
     TextView txt_hora;
+    ImageView call;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +54,8 @@ public class ver_des extends AppCompatActivity implements OnMapReadyCallback{
         txt_data = (TextView) findViewById(R.id.txt_data);
         txt_hora = (TextView) findViewById(R.id.txt_hora);
 
+        call = (ImageView) findViewById(R.id.imageView4);
+
         txt_nome.setText(nome_des);
         txt_idade.setText(idade_des);
         txt_descricao.setText(descricao);
@@ -58,6 +64,16 @@ public class ver_des extends AppCompatActivity implements OnMapReadyCallback{
 
         BaseURL baseURL = new BaseURL();
         Picasso.with(this).load(baseURL.getUrl()+""+img).into(txt_img);
+
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Uri uri = Uri.parse("tel:"+num.getText().toString());
+               // Intent intent = new Intent(Intent.ACTION_DIAL,uri);
+
+               // startActivity(intent);
+            }
+        });
     }
 
     @Override
