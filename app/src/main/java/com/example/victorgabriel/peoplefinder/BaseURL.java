@@ -6,7 +6,6 @@ package com.example.victorgabriel.peoplefinder;
 
 public class BaseURL {
     String url = "http://agenciaorder.com/eleodoro/ibm/";
-
     public String getUrl() {
         return url;
     }

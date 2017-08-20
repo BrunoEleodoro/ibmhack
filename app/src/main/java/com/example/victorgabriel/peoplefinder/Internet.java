@@ -1,5 +1,7 @@
 package com.example.victorgabriel.peoplefinder;
 
+import android.util.Log;
+
 import com.example.victorgabriel.peoplefinder.BaseURL;
 
 import java.io.BufferedReader;
@@ -37,6 +39,7 @@ public class Internet {
             }
             catch (Exception e)
             {
+                Log.i("Script","erro internet= "+e);
                 res += "[erro]";
             }
         }

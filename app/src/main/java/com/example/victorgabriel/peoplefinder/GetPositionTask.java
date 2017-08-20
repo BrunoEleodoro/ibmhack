@@ -132,7 +132,7 @@ public class GetPositionTask extends AsyncTask<Void, Void, Location> implements 
     {
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(context)
-                        .setSmallIcon(R.drawable.icon_dois)
+                        .setSmallIcon(R.drawable.iconbonito_pequeno)
                         .setContentTitle(titulo)
                         .setContentText(desc);
 

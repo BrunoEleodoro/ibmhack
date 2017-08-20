@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -11,6 +12,7 @@ import com.example.victorgabriel.peoplefinder.BaseURL;
 import com.example.victorgabriel.peoplefinder.Database;
 import com.example.victorgabriel.peoplefinder.Internet;
 import com.example.victorgabriel.peoplefinder.Message;
+import com.example.victorgabriel.peoplefinder.activities.Maps_des;
 
 /**
  * Created by bruno on 19/08/17.
@@ -32,7 +34,7 @@ public class getLogin extends AsyncTask<String,String,String> {
     {
         this.activity = activity;
         this.lv = lv;
-        this.email = internet.encode(email);
+        this.email = email;
         this.senha = internet.encode(senha);
         db = new Database(activity);
         dialog =message.progress(activity,"Aguarde, buscando pessoas desaparecidas...");
@@ -48,6 +50,7 @@ public class getLogin extends AsyncTask<String,String,String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         dialog.dismiss();
+        Log.i("Script","login retorno="+s);
         if(s.contains("[erro]"))
         {
           message.showMessage(activity,"Ocorreu um erro, tente novamente mais tarde!");
@@ -60,6 +63,8 @@ public class getLogin extends AsyncTask<String,String,String> {
                 Toast.makeText(activity.getApplicationContext(), "Logado com sucesso!", Toast.LENGTH_SHORT).show();
                 db.sql("DELETE FROM login WHERE 1");
                 db.sql("INSERT INTO login VALUES("+codigo+",\""+email+"\",\""+senha+"\");");
+                Intent i = new Intent(activity,Maps_des.class);
+                activity.startActivity(i);
                 activity.finish();
             }
             else

@@ -49,8 +49,7 @@ public class login extends AppCompatActivity {
 
                 new getLogin(login.this,login.getText().toString().trim(),senha.getText().toString()).execute("");
 
-                Intent i = new Intent(login.this,Maps_des.class);
-                startActivity(i);
+
 /*
                 checkDesaparecidos check = new checkDesaparecidos(login.this);
                 String location = check.getLocationByNetworkProvider();

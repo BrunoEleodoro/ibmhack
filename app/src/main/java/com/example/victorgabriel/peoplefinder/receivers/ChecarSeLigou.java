@@ -25,8 +25,8 @@ public class ChecarSeLigou extends BroadcastReceiver {
             c.setTimeInMillis(System.currentTimeMillis());
             c.add(Calendar.SECOND, 0);
             AlarmManager alarme_msg = (AlarmManager) context.getSystemService(ALARM_SERVICE);
-            //alarme_msg.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), 3600000, p_msg);
-            alarme_msg.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), 60000, p_msg);
+            alarme_msg.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), 1800000, p_msg);
+            //alarme_msg.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), 60000, p_msg);
 
 
         }

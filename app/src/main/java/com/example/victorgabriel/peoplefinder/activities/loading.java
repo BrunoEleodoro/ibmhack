@@ -23,7 +23,6 @@ public class loading extends AppCompatActivity {
 
         pb = (ProgressBar) findViewById(R.id.progressBar2);
 
-
         boolean alarmeAtivo = (PendingIntent.getBroadcast(this, 0, new Intent("VERIFICAR_PESSOAS"), PendingIntent.FLAG_NO_CREATE) == null);
 
         if(alarmeAtivo){
@@ -34,8 +33,8 @@ public class loading extends AppCompatActivity {
             Intent i = new Intent("VERIFICAR_PESSOAS");
             PendingIntent p = PendingIntent.getBroadcast(this, 0, i, 0);
             AlarmManager alarme = (AlarmManager) this.getSystemService(ALARM_SERVICE);
-            //alarme.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), 36000000, p);
-            alarme.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), 60000, p);
+            alarme.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), 1800000, p);
+            //alarme.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), 60000, p);
             Log.i("Script", "Novo alarme pessoas");
         }
         else{
@@ -53,7 +52,7 @@ public class loading extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                //new verificarCon(Loagin.this).execute("");
+
             }
         }).start();
 
