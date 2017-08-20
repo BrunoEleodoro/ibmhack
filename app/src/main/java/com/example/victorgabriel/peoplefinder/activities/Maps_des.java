@@ -85,6 +85,7 @@ public class Maps_des extends AppCompatActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.clear();
         findMe();
     }
     public void findMe()

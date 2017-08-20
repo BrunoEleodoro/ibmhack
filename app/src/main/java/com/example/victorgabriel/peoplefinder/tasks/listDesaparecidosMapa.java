@@ -2,6 +2,7 @@ package com.example.victorgabriel.peoplefinder.tasks;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -12,9 +13,15 @@ import com.example.victorgabriel.peoplefinder.BaseURL;
 import com.example.victorgabriel.peoplefinder.Desaparecido;
 import com.example.victorgabriel.peoplefinder.Internet;
 import com.example.victorgabriel.peoplefinder.Message;
+import com.example.victorgabriel.peoplefinder.R;
 import com.example.victorgabriel.peoplefinder.adapters.DesaparecidoAdapter;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -42,6 +49,8 @@ public class listDesaparecidosMapa extends AsyncTask<String,String,String> {
     {
         this.activity = activity;
         this.mMap = mMap;
+        this.minha_lat = minha_lat;
+        this.minha_long = minha_long;
         this.data_min = internet.encode(data_min);
         this.data_max = internet.encode(data_max);
         this.hora_min = internet.encode(hora_min);
@@ -88,8 +97,17 @@ public class listDesaparecidosMapa extends AsyncTask<String,String,String> {
                     float[] results = new float[1];
                     Location.distanceBetween(minha_lat,minha_long,Double.parseDouble(latitude),Double.parseDouble(longitude),results);
                     float distance = results[0];
-                    boolean perto = distance < 300;
-                    Toast.makeText(activity, nome_des + " esta perto", Toast.LENGTH_SHORT).show();
+                    boolean perto = distance < 600;
+                    BitmapDescriptor icone = BitmapDescriptorFactory.fromResource(R.drawable.iconbonito_pequeno);
+                    if(perto)
+                    {
+                        //Toast.makeText(activity, nome_des + " esta perto, ="+distance, Toast.LENGTH_SHORT).show();
+                        LatLng ponto = new LatLng(Double.parseDouble(latitude),Double.parseDouble(longitude));
+                        MarkerOptions marker = new MarkerOptions().position(ponto).title(nome_des).icon(icone);
+                        mMap.addMarker(marker);
+                    }
+
+
                     /*
                     Desaparecido desaparecido = new Desaparecido();
                     desaparecido.setCod(Integer.parseInt(cod));
@@ -106,6 +124,12 @@ public class listDesaparecidosMapa extends AsyncTask<String,String,String> {
                     */
                     i++;
                 }
+                mMap.addCircle(new CircleOptions()
+                .center(new LatLng(minha_lat,minha_long))
+                .radius(600)
+                .strokeColor(Color.parseColor("#87cefa"))
+                .fillColor(0x5587cefa)
+                .strokeWidth(2));
 
             }
             catch (Exception e)
