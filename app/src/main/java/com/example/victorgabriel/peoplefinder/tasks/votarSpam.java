@@ -46,7 +46,7 @@ public class votarSpam extends AsyncTask<String,String,String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         dialog.dismiss();
-        Toast.makeText(activity, ""+"votarSpam.php?cod_des="+cod_des+"&cod_user="+cod_user, Toast.LENGTH_SHORT).show();
+        
         if(s.contains("[erro]"))
         {
             message.showMessage(activity,"Ocorreu um erro, tente novamente mais tarde!");
