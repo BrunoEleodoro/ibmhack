@@ -107,14 +107,6 @@ public class people extends AppCompatActivity {
 
         new listDesaparecidos(this,lv,"","","","").execute("");
 
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-
-
-            }
-        });
 
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override

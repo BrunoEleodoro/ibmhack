@@ -2,14 +2,19 @@ package com.example.victorgabriel.peoplefinder.tasks;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.victorgabriel.peoplefinder.BaseURL;
 import com.example.victorgabriel.peoplefinder.Desaparecido;
 import com.example.victorgabriel.peoplefinder.Internet;
 import com.example.victorgabriel.peoplefinder.Message;
+import com.example.victorgabriel.peoplefinder.activities.people;
+import com.example.victorgabriel.peoplefinder.activities.ver_des;
 import com.example.victorgabriel.peoplefinder.adapters.DesaparecidoAdapter;
 
 
@@ -99,6 +104,31 @@ public class listDesaparecidos extends AsyncTask<String,String,String> {
                     i++;
                 }
                 lv.setAdapter(new DesaparecidoAdapter(activity,desaparecidos));
+                lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                                Desaparecido desaparecido = (Desaparecido) parent.getItemAtPosition(position);
+                                Intent intent = new Intent(activity,ver_des.class);
+                                intent.putExtra("nome_des",desaparecido.getNome_des());
+                                intent.putExtra("idade_des",desaparecido.getIdade_des());
+                                intent.putExtra("latitude",desaparecido.getLatitude());
+                                intent.putExtra("longitude",desaparecido.getLongitude());
+                                intent.putExtra("descricao",desaparecido.getDescricao());
+                                intent.putExtra("img",desaparecido.getImg());
+                                intent.putExtra("data",desaparecido.getData());
+                                intent.putExtra("hora",desaparecido.getHora());
+                                intent.putExtra("contato",desaparecido.getContato());
+                                activity.startActivity(intent);
+
+                            }
+                        });
+
+                    }
+                });
             }
             catch (Exception e)
             {
