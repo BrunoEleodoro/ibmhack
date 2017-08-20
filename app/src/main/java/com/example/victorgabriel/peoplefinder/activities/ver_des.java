@@ -26,6 +26,7 @@ public class ver_des extends AppCompatActivity implements OnMapReadyCallback{
     EditText txt_nome;
     EditText txt_idade;
     EditText txt_descricao;
+    EditText txt_contato;
     ImageView txt_img;
     TextView txt_data;
     TextView txt_hora;
@@ -45,7 +46,7 @@ public class ver_des extends AppCompatActivity implements OnMapReadyCallback{
         String img = getIntent().getStringExtra("img");
         String data = getIntent().getStringExtra("data");
         String hora = getIntent().getStringExtra("hora");
-        String contato = getIntent().getStringExtra("contato");
+        final String contato = getIntent().getStringExtra("contato");
 
         txt_nome = (EditText) findViewById(R.id.txt_nome);
         txt_idade = (EditText) findViewById(R.id.txt_idade);
@@ -53,6 +54,7 @@ public class ver_des extends AppCompatActivity implements OnMapReadyCallback{
         txt_img = (ImageView) findViewById(R.id.txt_img);
         txt_data = (TextView) findViewById(R.id.txt_data);
         txt_hora = (TextView) findViewById(R.id.txt_hora);
+        txt_contato = (EditText) findViewById(R.id.txt_contato);
 
         call = (ImageView) findViewById(R.id.imageView4);
 
@@ -61,6 +63,7 @@ public class ver_des extends AppCompatActivity implements OnMapReadyCallback{
         txt_descricao.setText(descricao);
         txt_data.setText(data);
         txt_hora.setText(hora);
+        txt_contato.setText(contato);
 
         BaseURL baseURL = new BaseURL();
         Picasso.with(this).load(baseURL.getUrl()+""+img).into(txt_img);
@@ -68,10 +71,10 @@ public class ver_des extends AppCompatActivity implements OnMapReadyCallback{
         call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Uri uri = Uri.parse("tel:"+num.getText().toString());
-               // Intent intent = new Intent(Intent.ACTION_DIAL,uri);
+                Uri uri = Uri.parse("tel:"+contato);
+               Intent intent = new Intent(Intent.ACTION_DIAL,uri);
 
-               // startActivity(intent);
+                startActivity(intent);
             }
         });
     }
