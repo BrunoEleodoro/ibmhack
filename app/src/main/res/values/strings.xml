@@ -6,7 +6,7 @@
     <string name="title_home">Missing People</string>
     <string name="title_dashboard">Missing People</string>
     <string name="title_notifications">Missing People</string>
-    <string-array name="filtro">
+    <string-array name="filtro"><!---->
         <item>Idade</item>
         <item>Data</item>
     </string-array>
