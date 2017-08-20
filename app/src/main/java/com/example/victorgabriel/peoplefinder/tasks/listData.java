@@ -30,9 +30,9 @@ import java.util.List;
 
 public class listData extends AsyncTask<String,String,String> {
 
-    Internet internet;
+    Internet internet = new Internet();
 
-    Message message;
+    Message message = new Message();
 
     Activity ac;
 

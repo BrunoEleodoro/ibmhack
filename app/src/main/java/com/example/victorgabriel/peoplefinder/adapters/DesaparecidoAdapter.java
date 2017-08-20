@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.victorgabriel.peoplefinder.BaseURL;
 import com.example.victorgabriel.peoplefinder.Database;
 import com.example.victorgabriel.peoplefinder.Desaparecido;
+import com.example.victorgabriel.peoplefinder.Internet;
 import com.example.victorgabriel.peoplefinder.R;
 import com.squareup.picasso.Picasso;
 
@@ -25,6 +26,7 @@ public class DesaparecidoAdapter extends BaseAdapter{
     Activity activity;
     Database db;
     Picasso picasso;
+    Internet net = new Internet();
     BaseURL url;
 
     public DesaparecidoAdapter(Activity activity, List<Desaparecido> des)
@@ -79,7 +81,8 @@ public class DesaparecidoAdapter extends BaseAdapter{
         }
         picasso.load(url.getUrl()+""+desaparecido.getImg()).resize(600,600).onlyScaleDown().placeholder(R.drawable.user).into(holder.img);
         holder.nome.setText(desaparecido.getNome_des());
-        holder.data.setText(desaparecido.getData());
+        String data = net.data_certa2(desaparecido.getData());
+        holder.data.setText(data);
         holder.hora.setText(desaparecido.getHora());
 
         return view;

@@ -77,6 +77,11 @@ public class Internet {
         String partes[] = text.split("/");
         return partes[2] + "-" +partes[1] + "-" + partes[0];
     }
+    public String data_certa2(String text)
+    {
+        String partes[] = text.split("-");
+        return partes[2] + "/" +partes[1] + "/" + partes[0];
+    }
     public String encode(String text)
     {
         String res = "";

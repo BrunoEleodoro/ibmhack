@@ -60,7 +60,8 @@ public class listDesaparecidosMapa extends AsyncTask<String,String,String> {
     @Override
     protected String doInBackground(String... strings) {
         String res = "";
-        res = internet.get("listDesaparecidos.php?data_min="+data_min+"&data_max="+data_max+"&hora_min="+idade_min+"&idade_max="+idade_max,"");
+        res = internet.get("listDesaparecidos.php?data_min="+data_min+"&data_max="+data_max+"&idade_min="+idade_min+"&idade_max="+idade_max,"");
+
         return res;
     }
 
@@ -68,12 +69,6 @@ public class listDesaparecidosMapa extends AsyncTask<String,String,String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         dialog.dismiss();
-        if(s.contains("[erro]"))
-        {
-            message.showMessage(activity,"Ocorreu um erro, tente novamente mais tarde!");
-        }
-        else
-        {
             try
             {
                 JSONArray array = new JSONArray(s);
@@ -101,27 +96,11 @@ public class listDesaparecidosMapa extends AsyncTask<String,String,String> {
                     BitmapDescriptor icone = BitmapDescriptorFactory.fromResource(R.drawable.iconbonito_pequeno);
                     if(perto)
                     {
-                        //Toast.makeText(activity, nome_des + " esta perto, ="+distance, Toast.LENGTH_SHORT).show();
                         LatLng ponto = new LatLng(Double.parseDouble(latitude),Double.parseDouble(longitude));
                         MarkerOptions marker = new MarkerOptions().position(ponto).title(nome_des).icon(icone);
                         mMap.addMarker(marker);
                     }
 
-
-                    /*
-                    Desaparecido desaparecido = new Desaparecido();
-                    desaparecido.setCod(Integer.parseInt(cod));
-                    desaparecido.setNome_des(nome_des);
-                    desaparecido.setIdade_des(idade_des);
-                    desaparecido.setLatitude(latitude);
-                    desaparecido.setLongitude(longitude);
-                    desaparecido.setDescricao(descricao);
-                    desaparecido.setImg(img);
-                    desaparecido.setData(data);
-                    desaparecido.setHora(hora);
-                    desaparecido.setContato(contato);
-                    desaparecido.setValido(valido);
-                    */
                     i++;
                 }
                 mMap.addCircle(new CircleOptions()
@@ -134,8 +113,8 @@ public class listDesaparecidosMapa extends AsyncTask<String,String,String> {
             }
             catch (Exception e)
             {
-                Log.i("Script","erro json listDesaparecidos="+e);
+                message.showMessage(activity,"Ocorreu um erro, tente novamente mais tarde!");
             }
-        }
+
     }
 }

@@ -24,9 +24,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_margin="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
         android:layout_weight="1"
+        android:background="#FF6347"
         android:onClick="confirmar"
-        android:text="Confirmar Posição"/>
+        android:text="Confirmar Posição" />
 
 </RelativeLayout>

@@ -50,7 +50,7 @@ public class getLogin extends AsyncTask<String,String,String> {
         dialog.dismiss();
         if(s.contains("[erro]"))
         {
-            message.showMessage(activity,"Ocorreu um erro, tente novamente mais tarde!");
+          message.showMessage(activity,"Ocorreu um erro, tente novamente mais tarde!");
         }
         else
         {
@@ -60,7 +60,6 @@ public class getLogin extends AsyncTask<String,String,String> {
                 Toast.makeText(activity.getApplicationContext(), "Logado com sucesso!", Toast.LENGTH_SHORT).show();
                 db.sql("DELETE FROM login WHERE 1");
                 db.sql("INSERT INTO login VALUES("+codigo+",\""+email+"\",\""+senha+"\");");
-                //Intent intent = new Intent(activity,Maps);
                 activity.finish();
             }
             else

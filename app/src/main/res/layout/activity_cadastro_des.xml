@@ -9,9 +9,9 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,7 +37,7 @@
                     android:orientation="vertical">
 
                     <android.support.design.widget.TextInputLayout
-                        android:id="@id/txt_nome"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -50,7 +50,7 @@
                     </android.support.design.widget.TextInputLayout>
 
                     <android.support.design.widget.TextInputLayout
-                        android:id="@id/txt_idade"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -64,7 +64,7 @@
                 </LinearLayout>
             </TableRow>
             <android.support.design.widget.TextInputLayout
-                android:id="@id/txt_descricao"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -78,7 +78,6 @@
 
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
-                android:id="@id/txt_contato"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -102,11 +101,12 @@
 
             <Button
                 android:id="@+id/button6"
-                android:layout_width="wrap_content"
+                android:layout_width="105dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="#FF6347"
                 android:onClick="escolherData"
-                android:text="Mudar data"/>
+                android:text="Mudar data" />
 
             <TextView
                 android:id="@+id/txt_hora"
@@ -119,11 +119,11 @@
 
             <Button
                 android:id="@+id/button7"
-                android:layout_width="wrap_content"
+                android:layout_width="105dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:background="#FF6347"
                 android:onClick="escolherHora"
-                android:text="Mudar hora"/>
+                android:text="Mudar hora" />
 
             <Button
                 android:id="@+id/button8"
@@ -132,7 +132,9 @@
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_weight="1"
-                android:text="SALVAR"/>
+                android:background="#FF6347"
+                android:onClick="salvar"
+                android:text="SALVAR" />
 
         </LinearLayout>
     <!--

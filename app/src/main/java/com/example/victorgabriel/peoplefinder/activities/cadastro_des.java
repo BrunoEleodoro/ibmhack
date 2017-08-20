@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.victorgabriel.peoplefinder.Internet;
 import com.example.victorgabriel.peoplefinder.Message;
 import com.example.victorgabriel.peoplefinder.R;
 import com.example.victorgabriel.peoplefinder.tasks.cadastroDesaparecido;
@@ -132,10 +133,11 @@ public class cadastro_des extends AppCompatActivity {
     }
     public void salvar(View view)
     {
+        Internet internet = new Internet();
         String nome = txt_nome.getText().toString().trim();
         String idade = txt_idade.getText().toString().trim();
         String descricao = txt_descricao.getText().toString().trim();
-        String data = txt_data.getText().toString().trim();
+        String data = internet.data_certa(txt_data.getText().toString().trim());
         String hora = txt_hora.getText().toString().trim();
         String contato = txt_contato.getText().toString().trim();
 
@@ -163,7 +165,7 @@ public class cadastro_des extends AppCompatActivity {
                     public void onDateSet(DatePicker view, int year,
                                           int monthOfYear, int dayOfMonth) {
 
-                        txt_data.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                        txt_data.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
 
                     }
                 }, mYear, mMonth, mDay);

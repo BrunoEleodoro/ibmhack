@@ -46,6 +46,7 @@ public class EscolherPosicao extends AppCompatActivity implements OnMapReadyCall
         intent.putExtra("latitude",""+lat);
         intent.putExtra("longitude",""+lng);
         startActivity(intent);
+        finish();
     }
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -62,6 +63,7 @@ public class EscolherPosicao extends AppCompatActivity implements OnMapReadyCall
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(lat, lng)));
             }
         });
+        findMe();
     }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -150,7 +152,7 @@ public class EscolherPosicao extends AppCompatActivity implements OnMapReadyCall
                 }
                 mMap.setMyLocationEnabled(false);
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(minha_localizacao));
-                //mMap.animateCamera(CameraUpdateFactory.zoomTo(zoom), 2000, null);
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(13), 2000, null);
                 CameraPosition cameraPosition = new CameraPosition.Builder()
                         .target(minha_localizacao).zoom(17).build();
                 mMap.animateCamera(CameraUpdateFactory

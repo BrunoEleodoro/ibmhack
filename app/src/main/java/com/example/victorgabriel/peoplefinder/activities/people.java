@@ -16,10 +16,12 @@ import android.widget.Spinner;
 
 import com.example.victorgabriel.peoplefinder.Database;
 import com.example.victorgabriel.peoplefinder.Desaparecido;
+import com.example.victorgabriel.peoplefinder.EscolherPosicao;
 import com.example.victorgabriel.peoplefinder.Internet;
 import com.example.victorgabriel.peoplefinder.R;
 import com.example.victorgabriel.peoplefinder.tasks.listData;
 import com.example.victorgabriel.peoplefinder.tasks.listDesaparecidos;
+import com.example.victorgabriel.peoplefinder.tasks.listIdade;
 import com.example.victorgabriel.peoplefinder.tasks.votarSpam;
 
 public class people extends AppCompatActivity {
@@ -30,6 +32,7 @@ public class people extends AppCompatActivity {
     Spinner filtro1;
     Spinner filtro2;
     Button btn;
+    Button btn2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,14 +53,34 @@ public class people extends AppCompatActivity {
 
         btn = (Button) findViewById(R.id.button5);
 
-        if(sp.getSelectedItem().toString().equals("Idade"))
-        {
-            new listData(this,filtro1,filtro2).execute("");
+    sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            if(sp.getSelectedItem().toString().equals("Idade"))
+            {
+                new listIdade(people.this,filtro1,filtro2).execute("");
+            }
+            else
+            {
+                new listData(people.this,filtro1,filtro2).execute("");
+            }
         }
-        else
-        {
-            new listData(this,filtro1,filtro2).execute("");
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
         }
+    });
+
+        btn2 = (Button) findViewById(R.id.button9);
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new listDesaparecidos(people.this,lv,"","","","").execute("");
+            }
+        });
+
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +102,8 @@ public class people extends AppCompatActivity {
                 }
             }
         });
+
+
 
         new listDesaparecidos(this,lv,"","","","").execute("");
 
@@ -133,8 +158,9 @@ public class people extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Intent i = new Intent(people.this,cadastro_des.class);
+               Intent i = new Intent(people.this,EscolherPosicao.class);
                 startActivity(i);
+                finish();
             }
         });
     }

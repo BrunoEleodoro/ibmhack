@@ -47,7 +47,7 @@ public class listDesaparecidos extends AsyncTask<String,String,String> {
     @Override
     protected String doInBackground(String... strings) {
         String res = "";
-        res = internet.get("listDesaparecidos.php?data_min="+data_min+"&data_max="+data_max+"&hora_min="+idade_min+"&hora_max="+idade_max,"");
+        res = internet.get("listDesaparecidos.php?data_min="+data_min+"&data_max="+data_max+"&idade_min="+idade_min+"&idade_max="+idade_max,"");
         return res;
     }
 

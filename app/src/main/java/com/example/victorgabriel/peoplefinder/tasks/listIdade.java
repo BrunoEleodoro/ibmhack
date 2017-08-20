@@ -18,9 +18,9 @@ import org.json.JSONObject;
 
 public class listIdade extends AsyncTask<String,String,String> {
 
-    Internet internet;
+    Internet internet = new Internet();
 
-    Message message;
+    Message message = new Message();
 
     Activity activity;
 
@@ -28,7 +28,9 @@ public class listIdade extends AsyncTask<String,String,String> {
 
     Spinner sp2;
 
-    public void listIdade(Activity activity,Spinner sp1, Spinner sp2)
+    String datas = null;
+
+    public listIdade(Activity activity,Spinner sp1, Spinner sp2)
     {
         this.activity = activity;
         this.sp2 = sp2;
@@ -47,7 +49,7 @@ public class listIdade extends AsyncTask<String,String,String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
 
-        String datas = null;
+
 
         if(s.contains("[erro]"))
         {
