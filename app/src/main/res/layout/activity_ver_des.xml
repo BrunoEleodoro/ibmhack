@@ -127,7 +127,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginRight="10dp"
                         android:layout_weight="16.65"
-                        app:srcCompat="@android:drawable/stat_sys_phone_call_forward" />
+                        app:srcCompat="@drawable/call" />
                 </LinearLayout>
 
 
