@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -33,12 +34,22 @@ public class EscolherPosicao extends AppCompatActivity implements OnMapReadyCall
     Boolean me_achou = false;
     double lat,lng;
     float zoom = (float) 17.5;
+    FloatingActionButton fab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_escolher_posicao);
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         carregarMapa();
+
+        fab = (FloatingActionButton) findViewById(R.id.floatingActionButton3);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                findMe();
+            }
+        });
     }
     public void confirmar(View view)
     {
