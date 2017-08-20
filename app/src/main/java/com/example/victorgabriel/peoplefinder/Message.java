@@ -13,7 +13,7 @@ public class Message {
     public ProgressDialog progress(Activity activity, String msg)
     {
         ProgressDialog dialog = new ProgressDialog(activity);
-        dialog.setIcon(R.mipmap.ic_launcher);
+        dialog.setIcon(R.drawable.icon_dois);
         dialog.setTitle("Aviso");
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         dialog.setMessage(msg);
@@ -25,7 +25,7 @@ public class Message {
     {
         AlertDialog.Builder dialog = new AlertDialog.Builder(activity);
         dialog.setTitle("Aviso");
-        dialog.setIcon(R.mipmap.ic_launcher);
+        dialog.setIcon(R.drawable.icon_dois);
         dialog.setMessage(msg);
         dialog.setNeutralButton("OK", new DialogInterface.OnClickListener() {
             @Override

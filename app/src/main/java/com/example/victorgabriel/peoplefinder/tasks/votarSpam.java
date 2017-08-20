@@ -38,6 +38,7 @@ public class votarSpam extends AsyncTask<String,String,String> {
     protected String doInBackground(String... strings) {
         String res = "";
         res = internet.get("votarSpam.php?cod_des="+cod_des+"&cod_user="+cod_user,"");
+
         return res;
     }
 
@@ -45,6 +46,7 @@ public class votarSpam extends AsyncTask<String,String,String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         dialog.dismiss();
+
         if(s.contains("[erro]"))
         {
             message.showMessage(activity,"Ocorreu um erro, tente novamente mais tarde!");
@@ -54,12 +56,12 @@ public class votarSpam extends AsyncTask<String,String,String> {
             if(s.contains("[sucesso]"))
             {
                 Toast.makeText(activity.getApplicationContext(), "Marcado com sucesso!", Toast.LENGTH_SHORT).show();
-                activity.finish();
+
             }
             else if(s.contains("[cadastrado]"))
             {
                 Toast.makeText(activity.getApplicationContext(), "Você já marcou isto como spam!", Toast.LENGTH_SHORT).show();
-                activity.finish();
+
             }
         }
     }
