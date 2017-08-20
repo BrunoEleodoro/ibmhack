@@ -69,7 +69,7 @@ public class ver_des extends AppCompatActivity implements OnMapReadyCallback{
         Picasso.with(this).load(baseURL.getUrl()+""+img).into(txt_img);
 
         call.setOnClickListener(new View.OnClickListener() {
-            @Override//asakld
+            @Override
             public void onClick(View v) {
                 Uri uri = Uri.parse("tel:"+contato);
                Intent intent = new Intent(Intent.ACTION_DIAL,uri);
