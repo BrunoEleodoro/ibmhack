@@ -2,6 +2,7 @@ package com.example.victorgabriel.peoplefinder.tasks;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.AsyncTask;
@@ -14,6 +15,7 @@ import com.example.victorgabriel.peoplefinder.Desaparecido;
 import com.example.victorgabriel.peoplefinder.Internet;
 import com.example.victorgabriel.peoplefinder.Message;
 import com.example.victorgabriel.peoplefinder.R;
+import com.example.victorgabriel.peoplefinder.activities.ver_des;
 import com.example.victorgabriel.peoplefinder.adapters.DesaparecidoAdapter;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptor;
@@ -73,6 +75,8 @@ public class listDesaparecidosMapa extends AsyncTask<String,String,String> {
             {
                 JSONArray array = new JSONArray(s);
                 int i = 0;
+                final List<String> lats = new ArrayList<>();
+                final List<Desaparecido> desaparecidos = new ArrayList<>();
                 List<LatLng> pontos = new ArrayList<>();
                 while(i<array.length())
                 {
@@ -89,6 +93,21 @@ public class listDesaparecidosMapa extends AsyncTask<String,String,String> {
                     String contato = object.optString("contato");
                     String valido = object.optString("valido");
 
+                    Desaparecido desaparecido = new Desaparecido();
+                    desaparecido.setCod(Integer.parseInt(cod));
+                    desaparecido.setNome_des(nome_des);
+                    desaparecido.setIdade_des(idade_des);
+                    desaparecido.setLatitude(latitude);
+                    desaparecido.setLongitude(longitude);
+                    desaparecido.setDescricao(descricao);
+                    desaparecido.setImg(img);
+                    desaparecido.setData(data);
+                    desaparecido.setHora(hora);
+                    desaparecido.setContato(contato);
+                    desaparecido.setValido(valido);
+                    lats.add(latitude);
+                    desaparecidos.add(desaparecido);
+
                     float[] results = new float[1];
                     Location.distanceBetween(minha_lat,minha_long,Double.parseDouble(latitude),Double.parseDouble(longitude),results);
                     float distance = results[0];
@@ -103,6 +122,26 @@ public class listDesaparecidosMapa extends AsyncTask<String,String,String> {
 
                     i++;
                 }
+                mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                    @Override
+                    public boolean onMarkerClick(Marker marker) {
+                        double latitude_marker = marker.getPosition().latitude;
+                        int index = lats.indexOf(""+latitude_marker);
+                        Desaparecido desaparecido = desaparecidos.get(index);
+                        Intent intent = new Intent(activity,ver_des.class);
+                        intent.putExtra("nome_des",desaparecido.getNome_des());
+                        intent.putExtra("idade_des",desaparecido.getIdade_des());
+                        intent.putExtra("latitude",desaparecido.getLatitude());
+                        intent.putExtra("longitude",desaparecido.getLongitude());
+                        intent.putExtra("descricao",desaparecido.getDescricao());
+                        intent.putExtra("img",desaparecido.getImg());
+                        intent.putExtra("data",desaparecido.getData());
+                        intent.putExtra("hora",desaparecido.getHora());
+                        intent.putExtra("contato",desaparecido.getContato());
+                        activity.startActivity(intent);
+                        return false;
+                    }
+                });
                 mMap.addCircle(new CircleOptions()
                 .center(new LatLng(minha_lat,minha_long))
                 .radius(600)
