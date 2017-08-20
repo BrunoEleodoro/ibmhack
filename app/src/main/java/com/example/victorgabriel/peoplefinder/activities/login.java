@@ -1,13 +1,18 @@
 package com.example.victorgabriel.peoplefinder.activities;
 
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.victorgabriel.peoplefinder.GetPositionTask;
 import com.example.victorgabriel.peoplefinder.R;
+import com.example.victorgabriel.peoplefinder.tasks.checkDesaparecidos;
 import com.example.victorgabriel.peoplefinder.tasks.getLogin;
 
 public class login extends AppCompatActivity {
@@ -17,6 +22,7 @@ public class login extends AppCompatActivity {
 
     EditText login;
     EditText senha;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +51,13 @@ public class login extends AppCompatActivity {
 
                 Intent i = new Intent(login.this,Maps_des.class);
                 startActivity(i);
+/*
+                checkDesaparecidos check = new checkDesaparecidos(login.this);
+                String location = check.getLocationByNetworkProvider();
+                Toast.makeText(login.this, ""+location, Toast.LENGTH_SHORT).show();
+                */
+                //new GetPositionTask(login.this).execute();
+
             }
         });
 
