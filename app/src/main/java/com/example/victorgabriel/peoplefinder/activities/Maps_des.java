@@ -80,7 +80,7 @@ public class Maps_des extends AppCompatActivity implements OnMapReadyCallback {
                 dialog.dismiss();
 
                 lat = location.getLatitude();
-                lng = location.getLongitude();//dsajkfsfj,
+                lng = location.getLongitude();//dsajkfsfj,gujfhg
                 LatLng ponto = new LatLng(lat, lng);
                 if (ActivityCompat.checkSelfPermission(Maps_des.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(Maps_des.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     return;
@@ -91,7 +91,7 @@ public class Maps_des extends AppCompatActivity implements OnMapReadyCallback {
 
                 mMap.setMyLocationEnabled(false);
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(ponto));
-                //mMap.animateCamera(CameraUpdateFactory.zoomTo(zoom), 2000, null);
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(13), 2000, null);
                 CameraPosition cameraPosition = new CameraPosition.Builder()
                         .target(ponto).zoom(13).build();
                 mMap.animateCamera(CameraUpdateFactory
