@@ -55,7 +55,7 @@
         <activity
             android:name=".activities.Maps_des"
             android:label="@string/title_activity_maps_des"/>
-        <activity android:name=".ver_des"/>
+        <activity android:name=".activities.ver_des"/>
         <activity android:name=".EscolherPosicao">
         </activity>
     </application>

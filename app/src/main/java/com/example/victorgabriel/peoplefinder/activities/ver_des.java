@@ -36,8 +36,9 @@ public class ver_des extends AppCompatActivity implements OnMapReadyCallback{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_des);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+                .findFragmentById(R.id.fragment);
         mapFragment.getMapAsync(this);
+
         String nome_des = getIntent().getStringExtra("nome_des");
         String idade_des = getIntent().getStringExtra("idade_des");
         latitude = Double.parseDouble(getIntent().getStringExtra("latitude"));
@@ -69,7 +70,7 @@ public class ver_des extends AppCompatActivity implements OnMapReadyCallback{
         Picasso.with(this).load(baseURL.getUrl()+""+img).into(txt_img);
 
         call.setOnClickListener(new View.OnClickListener() {
-            @Override//asakld
+            @Override
             public void onClick(View v) {
                 Uri uri = Uri.parse("tel:"+contato);
                Intent intent = new Intent(Intent.ACTION_DIAL,uri);
@@ -85,5 +86,6 @@ public class ver_des extends AppCompatActivity implements OnMapReadyCallback{
         LatLng sydney = new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Pessoa desaparecida"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(13),2000,null);
     }
 }
