@@ -112,7 +112,7 @@ public class people extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-                final Desaparecido des = new Desaparecido();
+                final Desaparecido des = (Desaparecido) parent.getItemAtPosition(position);
 
                 AlertDialog.Builder detalhes = new AlertDialog.Builder(people.this);
                 detalhes.setTitle("Spam");
@@ -142,7 +142,7 @@ public class people extends AppCompatActivity {
                 });
                 detalhes.show();
 
-                return false;
+                return true;
             }
         });
 
