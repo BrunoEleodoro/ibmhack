@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">PeopleFinder</string>
-    <string name="title_activity_maps">PeopleFinder</string>
-    <string name="title_activity_people">PeopleFinder</string>
-    <string name="title_activity_maps_des">PeopleFinder</string>
-    <string name="title_home">PeopleFinder</string>
-    <string name="title_dashboard">PeopleFinder</string>
-    <string name="title_notifications">PeopleFinder</string>
+    <string name="app_name">Missing People</string>
+    <string name="title_activity_maps">Missing People</string>
+    <string name="title_activity_people">Missing People</string>
+    <string name="title_activity_maps_des">Missing People</string>
+    <string name="title_home">Missing People</string>
+    <string name="title_dashboard">Missing People</string>
+    <string name="title_notifications">Missing People</string>
     <string-array name="filtro">
         <item>Idade</item>
         <item>Data</item>
