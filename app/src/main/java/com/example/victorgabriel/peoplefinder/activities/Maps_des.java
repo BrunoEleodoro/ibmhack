@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.victorgabriel.peoplefinder.R;
+import com.example.victorgabriel.peoplefinder.tasks.listDesaparecidosMapa;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -109,11 +110,13 @@ public class Maps_des extends AppCompatActivity implements OnMapReadyCallback {
 
                 mMap.setMyLocationEnabled(false);
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(ponto));
-                mMap.animateCamera(CameraUpdateFactory.zoomTo(13), 2000, null);
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
                 CameraPosition cameraPosition = new CameraPosition.Builder()
-                        .target(ponto).zoom(13).build();
+                        .target(ponto).zoom(15).build();
                 mMap.animateCamera(CameraUpdateFactory
                         .newCameraPosition(cameraPosition));
+
+                new listDesaparecidosMapa(Maps_des.this,mMap,lat,lng,"","","","").execute("");
 
             }
         });
